@@ -1,1 +1,2 @@
 python rezizer.py
+pause
