@@ -11,11 +11,12 @@ def rezize(path, percentage):
         if file_str.lower().endswith(".jpg"):
             img = Image.open(path + os.sep + file_str)
             size = img.size
-            newsize = (int(size[0]*percentage), int(size[1]*percentage)) 
+            newsize = (int(size[0]*percentage), int(size[1]*percentage))
             resized_img = img.resize(newsize)
-            
-            resized_img.save(path +  os.sep + "modified" + os.sep + file_str[0:-4] + 'modified' + ".jpg")
+            exif = img.getexif()
+            resized_img.save(path +  os.sep + "modified" + os.sep + file_str[0:-4] + 'modified' + ".jpg", exif=exif)
             print(f"Picture {files.index(file_str) + 1}")
+            img.close()
     print("Images resized")
 
 
